@@ -1,5 +1,7 @@
 const button = document.getElementById("button");
 const audioElement = document.getElementById("audio");
+const transcription = document.getElementById("transcription");
+let currentJoke = "";
 
 // VoiceRSS Javascript SDK
 const VoiceRSS = {
@@ -125,7 +127,10 @@ function toggleButton() {
 
 async function tellAJoke() {
   button.disabled = true;
-  readAloud(await getJokes());
+  currentJoke = await getJokes();
+  readAloud(currentJoke);
+  transcription.classList.remove("transparent");
+  transcription.innerText = currentJoke;
 }
 
 // Get jokes from joke API

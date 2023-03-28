@@ -14,7 +14,7 @@ body {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background: url('./robot.gif');
   background-size: contain;
@@ -24,6 +24,7 @@ body {
 }
 
 button {
+  margin: 40px 0 0 0;
   cursor: pointer;
   outline: none;
   width: 200px;
@@ -48,6 +49,20 @@ button:active {
 button:disabled {
   cursor: default;
   filter: brightness(30%);
+}
+
+.transcription {
+ margin-bottom: 40px;
+ padding: 10px;
+  width: 80%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.transparent{
+  background: none;
 }
 
 /* Media quedry: Tablet or smaller */
