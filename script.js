@@ -119,7 +119,12 @@ function readAloud(text) {
   });
 }
 
+function toggleButton() {
+  button.disabled = !button.disabled;
+}
+
 async function tellAJoke() {
+  button.disabled = true;
   readAloud(await getJokes());
 }
 
@@ -127,8 +132,7 @@ async function tellAJoke() {
 async function getJokes() {
   let joke = "";
 
-  const apiUrl =
-    "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Dark,Pun,Spooky,Christmas";
+  const apiUrl = "https://v2.jokeapi.dev/joke/Programming";
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -144,4 +148,5 @@ async function getJokes() {
   return joke;
 }
 
-tellAJoke();
+button.addEventListener("click", tellAJoke);
+audioElement.addEventListener("ended", toggleButton);
