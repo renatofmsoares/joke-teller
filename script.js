@@ -106,17 +106,39 @@ const VoiceRSS = {
   },
 };
 
-function test() {
-  VoiceRSS.speech({
-    key: "de785c0df40c40e48a3634cba2aa0e27",
-    src: "Hello, world!",
-    hl: "en-us",
-    v: "Linda",
-    r: 0,
-    c: "mp3",
-    f: "44khz_16bit_stereo",
-    ssml: false,
-  });
+// function test() {
+//   VoiceRSS.speech({
+//     key: "de785c0df40c40e48a3634cba2aa0e27",
+//     src: "Hello, world!",
+//     hl: "en-us",
+//     v: "Linda",
+//     r: 0,
+//     c: "mp3",
+//     f: "44khz_16bit_stereo",
+//     ssml: false,
+//   });
+// }
+
+// test();
+
+// Get jokes from joke API
+async function getJokes() {
+  let joke = "";
+
+  const apiUrl =
+    "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Dark,Pun,Spooky,Christmas";
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    if (data.setup) {
+      joke = `${data.setup} ... ${data.delivery}`;
+    } else {
+      joke = data.joke;
+    }
+    console.log("joke: ", joke);
+  } catch (error) {
+    console.log("OPS!: ", error);
+  }
 }
 
-test();
+getJokes();
